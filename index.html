@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>Serwis pogodowy</title>
+	<meta name="description" content="Serwis z pogodą">
+	<meta name="keywords" content="pogoda, deszcz, słońce, chmury">
+	<meta name="author" content="Łukasz Bąbiński">
+	<meta http-equiv="X-Ua-Compatible" content="IE=edge">
+	
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="./js/script.js"></script>
+	<link rel="stylesheet" href="main.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700i&display=swap&subset=latin-ext" rel="stylesheet">
+    
+    
+	
+	
+</head>
+
+<body>
+
+	<header>
+	
+		
+	
+	</header>
+	
+	<main>
+		
+		<section class="content">
+		
+			<div class="container">
+				
+								
+				<div class="row">
+					
+					
+                        <div class="form-group">
+                          <label class="sr-only" for="city">Miasto</label>
+                          <input type="text" class="search" id="city" placeholder="Podaj miasto">
+                        </div>
+                          <button class="btn btn-default" id="submit">Wyślij</button>
+                          <ul class="suggestions"> 
+                            <li>Filter for a city</li>
+                          </ul>
+                   <script>
+                   const endpoint = 'http://localhost/miasta.json';
+const cities = [];
+fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => cities.push(...data))
+
+function findMatches(wordToMatch, cities) {
+    return cities.filter(place => {
+        const regex = new RegExp(wordToMatch, 'gi');
+        return place.city.match(regex)
+    });
+}
+
+function displayMatches() {
+    const matchArray = findMatches(this.value, cities);
+    const html = matchArray.map(place => {
+        return `
+        <li>
+            <span class="name">${place.city}</span>
+        </li>
+        `;
+    }).join('');
+    suggestions.innerHTML = html;
+}
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+
+                   </script>
+
+					
+				
+                </div>
+                
+                <div class="row" id="slider">
+                        
+                </div>
+				
+			</div>	
+				
+		</section>
+		
+	</main>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	
+    <script src="js/bootstrap.min.js"></script>
+    
+    
+    
+	
+</body>
+</html>

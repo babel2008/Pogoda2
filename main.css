@@ -1,0 +1,52 @@
+body
+{
+	background-color: #2F3336;
+	color: #efefef;
+	font-family: 'Lato', sans-serif;
+	font-size: 17px;
+	background-image: url("img/computer2.jpg");
+	opacity: 1;
+	color: black;
+}
+
+.content
+{
+	text-align: center;
+}
+
+.content img
+{
+	width: 100%;
+	height: auto;
+}
+
+.navbar
+{
+	min-height: 57px;
+}
+
+.bg-content
+{
+	background-color: #7c4220;
+}
+
+.row
+{
+	padding-top: 30px;
+	background-color: #F9F9F9;
+	opacity: 0.90;
+}
+
+#photo
+{
+  	animation-name: photo;
+  	animation-duration: 2s;  
+  	animation-fill-mode: both;
+}
+
+@keyframes photo 
+{
+	from {left: -1000px;}
+	to {left: 0px;}
+}
+
